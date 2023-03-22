@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas" width="1000" height="700" style="border: 1px solid #ddd"></canvas>
+</body>
+</html>
+<script>
+    class Rectangle {
+        x;
+        y;
+        width;
+        height;
+
+        constructor(x,y,width,height) {
+            this.x = x;
+            this.y = y;
+            this.width = width;
+            this.height = height;
+        }
+
+        getArea () {
+            return  this.width * this.height;
+        }
+
+        getPerimeter () {
+            return  2 * (this.width + this.height);
+        }
+
+        drawRec () {
+            let canvas = document.getElementById("myCanvas");
+            let ctx = canvas.getContext("2d");
+            ctx.beginPath();
+            ctx.fillStyle = "green";
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+            let x = this.x + this.width / 2;
+            let y = this.y + this.height / 2;
+            ctx.fillStyle = "white";
+            ctx.font = "bold 15px Arial";
+            ctx.textAlign = "center";
+            ctx.fillText(`Diện tích: ${this.getArea()}, Chu vi: ${this.getPerimeter()}`, x, y);
+            // ctx.fill();
+            ctx.closePath();
+        }
+    }
+
+    let new_rec = new Rectangle(200,200,400,200);
+    new_rec.drawRec();
+</script>
